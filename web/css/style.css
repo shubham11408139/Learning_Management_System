@@ -76,7 +76,7 @@ background: #fff;}
     background-size: cover;
     min-height: 800px;
 }
-.nav > li > a {
+/*.nav > li > a {
     position: relative;
     display: block;
 }

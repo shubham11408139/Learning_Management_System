@@ -1,0 +1,417 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<!-- saved from url=(0057)https://talentcentral.cebglobal.com/player/workflow/start -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta content="" name="_csrf"><meta content="" name="_csrf_header"><meta content="IE=edge" http-equiv="X-UA-Compatible"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="" name="description"><meta content="" name="author"><script async="" src="./img2_files/analytics.js.download"></script><script>
+  	var custom_theme = '';
+  </script><link href="./img2_files/player.css" type="text/css" rel="stylesheet" class="themeCSS"><link href="./img2_files/px-video.css" type="text/css" rel="stylesheet"><link href="./img2_files/datepicker.css" type="text/css" rel="stylesheet"><script type="text/javascript">
+	    var theme_bw_url = "https://talentcentral.cebglobal.com/cdn/13.1/common/resources/styles/player/theme-bw.css";
+	    var theme_by_url = "https://talentcentral.cebglobal.com/cdn/13.1/common/resources/styles/player/theme-by.css";
+	    var theme_owb_url = "https://talentcentral.cebglobal.com/cdn/13.1/common/resources/styles/player/theme-owb.css";
+	    var default_theme_url = "";
+	    var fallback = "https://talentcentral.cebglobal.com/cdn/13.1/common/resources/styles/player/player.css";
+	    default_theme_url = default_theme_url ? default_theme_url :  fallback;
+	    
+	</script><script type="text/javascript" src="./img2_files/pluginCommon.js.download"></script><script>
+  	var captchaLanguage = 'en_US';
+  	var saveCandidateLocationUrl = '/player/workflow/savecandidatelocations';
+  	</script><title>Home Page | TalentCentral</title><script>
+		//BEGIN: Fix for browser backbutton
+		var analyticsconfig_url = 'https://talentcentral.cebglobal.com/cdn/13.1/common/resources/json/analyticsconfig.json';
+		var newtitl111='';
+		var mytitle='';
+		var mytitlexvz='';
+		var mytitleabc='';
+		var isPreview = '';
+		var isChangePasswordLink = '';
+		 if(!isPreview){
+			var maxBackButtonLoad = 20;	//Fix for quick backbutton clicks
+			if (app.getCurrentDeviceType() == 'Mobile' || app.getCurrentDeviceType() == 'Tablet') {
+				maxBackButtonLoad=10;
+			}
+	        if (window.readyState != 'complete') {
+	              window.addEventListener('load', function() {
+	                    setTimeout(function() {
+	                          window.onpopstate=function(){
+	                        	  if (location.href.indexOf ('#main') > -1) return;
+ 	                        	  location.reload();
+	                          };
+	                    }, 0)
+	              });
+	        } else {
+	              window.onpopstate=function(){
+	            	  if (location.href.indexOf ('#main') > -1) return;
+	            	  location.reload();
+	               };
+	        }
+			
+	        if (typeof history.replaceState == 'function' && isChangePasswordLink !== 'true') {
+	              var generic_default_url = '/player/workflow/start';
+	              if(location.href.indexOf('/testdriver/launch') > -1) {
+	                    for(var i=maxBackButtonLoad;i>0;i--) history.pushState({}, '', location.href);
+	              } else {
+	                    history.replaceState({}, '', generic_default_url);
+	                    for(var i=maxBackButtonLoad;i>0;i--) history.pushState({}, '', generic_default_url);
+	              }
+	        } 
+		} 
+		//END: Fix for browser backbutton
+
+		CEBWidget.beforeReady(function(){
+			loadBundles();
+		});
+		app.localizationLoaded = false;
+		app.maxLengthPropertiesUrl = '/player/resources/properties/maxlength.properties'; // Passing in maxlength properties file url
+		function loadBundles(){
+			var bundlepath = '/player/resources/scripts/app/localized/'.replace(/;jsessionid=(.*)$/, ''); //NJ: replace jessionid for bundlepath url
+			jQuery.i18n.properties({
+			    name:'messages-js', 
+			    path:bundlepath, 
+			    mode:'both',
+			    cache: true,
+			    language:captchaLanguage,
+			    callback : app.setLocalizationLoaded
+			});
+		}
+		</script><script>
+         try {
+         	if (! ('player' in window)) window['player'] = {};
+         	player.getDataURI = '/player/workflow/getdata';
+         	player.getNextItemURI = '/player/workflow/getnextitem';
+         	player.getSaveItemURI = '/player/workflow/savedata';
+         	player.getLoginViewURI = '/player/workflow/userlogin' + "?mode=signin";
+         	player.endWorkflowURI = '/player/workflow/endcurrentworkflow';
+         	player.backgroundImageURL = '';
+         	player.CDN_URL = 'https://talentcentral.cebglobal.com/cdn';
+         	player.CDN_URL = player.CDN_URL.replace(/\/$/, '');
+         } catch (ex) {};
+         var mediaDetailsURL = '/player/workflow/getmediadetail/'.replace(/;jsessionid=(.*)$/, '');
+         var sessionTimeOutTime = '';
+         var showInactivityTimeout = "";
+         var prevUrl = "";
+         //HeaderWidget,MobileHeaderWidget ModalMaps
+     	 var showExit  = '' || false;
+     	 var companyId = '';
+     	 var isClosedCaptionEnabled = '' || false;
+     	 var isProjectExpired = '' || false;
+     	 var deadLinePassed = '' || false;
+     	 var emailAddress = "";
+         if(prevUrl == "")
+         	prevUrl = "/player/testdriver/prev";
+         $(document).ready(function(){
+        	 setTimeout(function(){
+        		 fetchHeaderWidget("HeaderWidget",$("#HeaderWidget"),"showExit="+showExit+",isClosedCaptionEnabled="+isClosedCaptionEnabled+",isProjectExpired="+isProjectExpired+",deadLinePassed="+deadLinePassed+",hideloader=true,cachebuster="+new Date().getTime());
+        		 fetchHeaderWidget("MobileHeaderWidget",$("#MobileHeaderWidget"),"showExit="+showExit+",isClosedCaptionEnabled="+isClosedCaptionEnabled+",isProjectExpired="+isProjectExpired+",deadLinePassed="+deadLinePassed);
+        		 if(emailAddress)
+        		 fetchHeaderWidget("SignInPageWidget",$("#SignInPageWidget"),"emailAddress="+emailAddress+",deadLinePassed="+deadLinePassed+",isProjectExpired="+isProjectExpired+",cachebuster="+new Date().getTime());
+        		 else
+        		 fetchHeaderWidget("SignInPageWidget",$("#SignInPageWidget"),"cachebuster="+new Date().getTime()+",deadLinePassed="+deadLinePassed+",isProjectExpired="+isProjectExpired);	 
+        	 },300);
+         	var preload_background = new Image();
+         	preload_background.onload = function () {
+         		$('body').css ({'background-image' : 'url("' + player.backgroundImageURL + '" )' ,'background-position':'center center','background-repeat':'no-repeat' ,'background-size':'cover','background-attachment':'fixed' });
+         	};
+         	if(player.backgroundImageURL)
+       		{
+         		preload_background.src = player.backgroundImageURL;
+       		}
+         });
+         var fetchHeaderWidget = function (widgetName , container , param) {
+        		if (container.find ('.cebwidget').length) return;
+        		if(param.trim())
+        			return app.loadWidgetByName (widgetName, container, loadUrl , param );
+        		else
+        			return app.loadWidgetByName (widgetName, container, loadUrl);	
+        	};
+        	
+      </script><script type="text/javascript" src="./img2_files/player.js.download"></script><script type="text/javascript" src="./img2_files/mediaUtil.js.download"></script><style type="text/css">
+         div#main {
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+         background-repeat: no-repeat; 
+         background-position: center center;
+         background-attachment : fixed;
+         min-height: 100%;
+         padding-top: 20px;
+         }
+         body:before{
+         /*content: url();*/
+         display:none;
+         /*background-image: url();*/
+         }
+         body{
+         background-repeat: no-repeat;
+         background-position: center top;
+         background-attachment: fixed;
+         background-size: cover;
+         }
+         
+        /**
+		* Do Not remove from here. It cannot reside in CSS	
+		* Fix for download button in Chrome with audios and videos			
+		*/ 
+		video::-internal-media-controls-download-button {
+		    display:none;
+		    width: 0px;
+		    height: 0px;
+		    position: absolute;
+		    top: -10000px;
+		}
+		
+		video::-webkit-media-controls-enclosure {
+		    overflow:hidden;
+		}
+		
+		video::-webkit-media-controls-panel {
+		    width: calc(100% + 30px); /* Adjust as needed */
+		}
+		
+		audio::-internal-media-controls-download-button {
+		    display:none;
+		    width: 0px;
+		    height: 0px;
+		    position: absolute;
+		    top: -10000px;
+		}
+		
+		audio::-webkit-media-controls-enclosure {
+		    overflow:hidden;
+		}
+		
+		audio::-webkit-media-controls-panel {
+		    width: calc(100% + 30px); /* Adjust as needed */
+		}
+		/*
+		* End
+		*/
+         
+      </style><style type="text/css">
+				body:before{
+		         	content: '';
+		         	background-image: none;
+		         }
+			</style><script>
+      	 if (! ('player' in window)) window['player'] = {};
+         var uploadBrowserChecks = '/player/uadetectorce/uploadbrowserchecks';
+         var loadUrl = '/player/loadwidget';
+         var candidateDetailUrl = '/player/candidateprofile/getcandidateprofile';
+         var saveCandidateDetailUrl = '/player/candidateprofile/manageprofile';
+         var changeThemeControllerURL = '/player/theme/change';
+         var candidateProgressUrl = '/player/workflow/getcandidateprogress';
+         var isPreview = '';
+         var companyId_preview_template = '';
+		 var logout_url = '/player/resources/shl_security_logout';
+         
+         $(window).scroll(function(e){
+         	e.preventDefault ();
+         if ($(this).scrollTop() > 0) {
+         $('.scrollToTop').fadeIn();
+         } else {
+         $('.scrollToTop').fadeOut();
+         }
+         });
+         function scrollToTop () {
+         $('html, body').animate({scrollTop : 0},600);
+         return false;
+         }
+      </script></head><body class="tundra spring" style=""><div tabindex="0" id="skip-to-main_content"><a href="https://talentcentral.cebglobal.com/player/workflow/start#main">Skip to main content</a></div><header id="HeaderWidget" class="clearfix player-header visible-md visible-lg"><!--?xml version="1.0" encoding="UTF-8"?-->
+<div><div version="2.0"><script>
+  	var widgetName = 'HeaderWidget',
+  	widgetParams = 'showExit=false,isClosedCaptionEnabled=false,isProjectExpired=false,deadLinePassed=false,hideloader=true,cachebuster=1521286315219';
+  </script><!--?xml version="1.0" encoding="UTF-8"?-->
+<div version="2.0" data-bind-version="2" widget-type="HeaderWidget" widget-name="HeaderWidget" class="cebwidget" widget-id="w_HeaderWidget_1" style="visibility: visible; opacity: 1; display: block;"><nav id="js-bootstrap-offcanvas" role="navigation" class="navbar navbar-default _desktopHeader navbar-fixed-top"><div class="container-fluid no-padding"><div class="navbar-header margin-left-10"><span href="javascript:void(0);" class="navbar-brand"></span></div><ul class="nav navbar-nav navbar-left"><li data-bind="isVrProject" data-bind-type="show" style="display: none;"><a class="openGenericMenu" data-widgetname="PlayerCandidateProgressPage" href="javascript:void(0);" data-bind-type="show" data-bind="showApplication">Application</a></li><li class="dropdown"><a aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="dropdown-toggle add-outline-focus desktop-public-header" href="https://talentcentral.cebglobal.com/player/workflow/start#">Help<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="http://support.cebglobal.com/candidate" target="_blank" aria-label="Contact Us (Opens in new window)">Contact Us</a></li><li class="header-browserCheck"><a href="https://talentcentral.cebglobal.com/player/workflow/start#">OS and Browser Compatibility</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right margin-right-10"><li class="margin-right-10 language-dropdown-li"><label class="sr-only" for="language-dropdown">Select Language</label><select data-bind-options-key="locale" data-bind-options-value="languageName" data-bind-select-options="langGroups" id="language-dropdown" class="form-control" widget-data-event="change::localeUpdated" data-bind-type="formvalue" data-bind="languageSelected"></select></li><li class="dropdown"><a aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="dropdown-toggle add-outline-focus accessibilityFocus" href="https://talentcentral.cebglobal.com/player/workflow/start#"><i style="position:relative;top:1px;" class="shl-icon_accessibility blue bigger-120 margin-right-5"><span class="hidden">&nbsp;</span></i>Accessibility<span class="caret"></span></a><ul class="dropdown-menu dropdown-menu-right _accessibilityMenu"><li style="text-decoration:underline;"><a class="accessibilityHelp accessibility_modal color_blue" href="https://talentcentral.cebglobal.com/player/workflow/start#">Get Accessibility Help</a></li><li><input data-bind-transform="expression::checked" attr-to-bind="checked" data-bind-type="attribute" data-bind-if-transform="is::default" data-bind-if="accessibility" widget-data-event="change::changeTheme" data-bind="." value="default" class="allowKeyboardAccess" id="default" type="checkbox" name="access_desktop" role="radio" checked="checked"><label class="_forRadio theme-default" for="default"><span class="fLeft _radioLabel">Default</span><span class="_radio fRight"></span></label></li><li><input data-bind-transform="expression::checked" attr-to-bind="checked" data-bind-type="attribute" data-bind-if-transform="is::off-white-black" data-bind-if="accessibility" widget-data-event="change::changeTheme" data-bind="." value="off-white-black" class="allowKeyboardAccess" id="owb" type="checkbox" name="access_desktop" role="radio"><label class="_forRadio theme-owb" for="owb"><span class="fLeft _radioLabel">Off-White/Black</span><span class="_radio fRight"></span></label></li><li><input data-bind-transform="expression::checked" attr-to-bind="checked" data-bind-type="attribute" data-bind-if-transform="is::black-white" data-bind-if="accessibility" widget-data-event="change::changeTheme" data-bind="." value="black-white" id="bw" class="allowKeyboardAccess" type="checkbox" name="access_desktop" role="radio"><label class="_forRadio theme-bw" for="bw"><span class="fLeft _radioLabel">Black/White</span><span class="_radio fRight"></span></label></li><li><input class="allowKeyboardAccess" data-bind-transform="expression::checked" attr-to-bind="checked" data-bind-type="attribute" data-bind-if-transform="is::blue-yellow" data-bind-if="accessibility" widget-data-event="change::changeTheme" data-bind="." value="blue-yellow" id="by" type="checkbox" name="access_desktop" role="radio"><label class="_forRadio theme-by" for="by"><span class="fLeft _radioLabel">Blue/Yellow</span><span class="_radio fRight"></span></label></li></ul></li><li data-bind-type="append-class" data-bind-transform="expression::hidden" data-bind-if-transform="is::false" data-bind-if="showDetails" data-bind="." class="dropdown margin-right-10"><a aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" data-bind="isLoggedIn" data-bind-type="show" class="dropdown-toggle add-outline-focus" href="https://talentcentral.cebglobal.com/player/workflow/start#" style="display: none;"><i style="position:relative;top:1px;" class="shl-icon_user blue margin-left-third bigger-120 margin-right-5"><span class="hidden">&nbsp;</span></i>Profile<span class="caret"></span></a><ul class="dropdown-menu dropdown-menu-right"><li data-bind="showDetails" data-bind-type="show" style="display: none;"><a class="openGenericMenu" data-widgetname="CandidateDetailsWidget" id="candidateDetailsLink" href="https://talentcentral.cebglobal.com/player/workflow/start#">Your Details</a></li><li data-bind="showResearchQuestions" data-bind-type="show" style="display: none;"><a class="openGenericMenu" data-widgetname="CEBResearchQuestionsWidget" href="https://talentcentral.cebglobal.com/player/workflow/start#">Research Questions</a></li><li data-bind="showEeo" data-bind-type="show" style="display: none;"><a class="openGenericMenu" data-widgetname="EEOQuestionWidget" href="https://talentcentral.cebglobal.com/player/workflow/start#">EEO Form</a></li><li data-bind="showOfccp" data-bind-type="show" style="display: none;"><a class="openGenericMenu" data-widgetname="" href="https://talentcentral.cebglobal.com/player/workflow/start#">OFCCP Forms</a></li></ul></li><li class="hidden-xs hidden-sm"><span class="label label-primary header-custom-sign-btn" data-bind="isLoggedIn" data-bind-type="hide"><a href="https://talentcentral.cebglobal.com/player/workflow/userlogin?mode=signin">Sign In</a>&nbsp;<span class="text-muted">or</span>&nbsp;<a href="https://talentcentral.cebglobal.com/player/workflow/userlogin?mode=signup">Sign Up</a></span><a class="header-signout" href="javascript:void(0);" data-href="/player/resources/shl_security_logout" data-bind="isLoggedIn" data-bind-type="show" style="display: none;"><i style="position:relative; top:2px;" class="shl-icon_exit red margin-left-third bigger-120 margin-right-5"><span class="hidden">&nbsp;</span></i>Sign Out</a></li></ul></div></nav></div><script>
+  		
+  		$(document).ready(function(){
+			var i;
+			var cultureCode = '';
+			var value = '';
+			var domain = '';
+			var path = '';
+			var expiryTime = '';
+			waitTillPageContextLoads();
+			function waitTillPageContextLoads(){
+				for(i =0; i<=3000; i++){
+					if(i == 3000){
+						cultureCode = '';
+						value = '';
+						domain = '';
+						path = '';
+						expiryTime = '';
+					}
+				}
+			}
+			
+			var cookie = cultureCode+"="+value+";expires="+expiryTime+";path="+path;
+			document.cookie = cookie;
+  		});
+  		
+  		/* EventManager.registerEventHandlers('DataBound', widgetName , function(args, event){
+			debugger;
+			var i;
+			waitTillPageContextLoads();
+			function waitTillPageContextLoads(){
+				for(i =0; i<=3000; i++){
+					if(i == 3000){
+						
+						var context = 'org.apache.jasper.runtime.PageContextImpl@3ec73b96';
+						var context1 = '';
+						var tempCookie = '';
+						
+						console.log(''+ ' Second Time');
+						console.log(document.getElementById("_testCookie")+ ' Second Time');
+						console.log(context+ ' Second Time');
+						console.log(''+ ' Second Time');
+						console.log(tempCookie);
+					}
+				}
+			}
+		}); */
+  </script></div></div></header><header id="MobileHeaderWidget" class="clearfix player-header visible-xs visible-sm" style="padding-bottom: 13px;"><!--?xml version="1.0" encoding="UTF-8"?-->
+<div><div version="2.0"><script>
+  	var widgetName = 'MobileHeaderWidget',
+  	widgetParams = 'showExit=false,isClosedCaptionEnabled=false,isProjectExpired=false,deadLinePassed=false';
+  </script><div version="2.0" class="tc-source-loader position-relative" style="display: none;"><div class="commonloadingicon"><i class="icon-spinner icon-spin icon-large"><i class="hidden">&nbsp;</i></i></div></div><!--?xml version="1.0" encoding="UTF-8"?-->
+<div version="2.0" data-bind-version="2" widget-type="MobileHeaderWidget" widget-name="MobileHeaderWidget" class="cebwidget" widget-id="w_MobileHeaderWidget_0" style="opacity: 1; visibility: visible; display: block;"><div class="_header visible-xs visible-sm"><div class="container-fluid"><div class="col-xs-12"><div class="col-xs-2 col-sm-1"><a aria-label="Menu Icon" id="_menuIcon" class="_iconContainer" href="javascript:void(0);"><i aria-hidden="true" class="shl-icon_menu">&nbsp;</i><span class="sr-only">Menu Icon</span></a><a tabindex="0" aria-label="Go Back" id="_goBack" class="_iconContainer hidden" href="javascript:void(0);"><i class="shl-icon_arrow_left">&nbsp;</i><span class="sr-only">Go Back</span></a></div><div class="col-xs-2 col-sm-1"><a aria-label="Info Icon" id="_infoIcon" class="_iconContainer" href="javascript:void(0);" style="display: none;"><i aria-hidden="true" class="shl-icon_information22">&nbsp;</i><span class="sr-only">Info Icon</span></a> &nbsp;
+						</div><div class="col-xs-4 col-xs-offset-0 col-sm-offset-2 text-center navbar-brand no-padding"></div><div class="col-sm-4 text-right visible-sm padding-top-10"><a class="header-signout" href="https://talentcentral.cebglobal.com/player/resources/shl_security_logout" data-bind="isLoggedIn" data-bind-type="show" style="display: none;">Sign Out</a><a href="https://talentcentral.cebglobal.com/player/workflow/userlogin?mode=signin" class="text-brand" data-bind="isLoggedIn" data-bind-type="hide">SIGN IN &nbsp;<span class="text-muted">or</span>&nbsp; SIGN UP</a></div></div></div></div><div aria-hidden="true" class="_hiddenMenu col-xs-10 col-sm-4 no-padding visible-xs visible-sm" style="height: 613px;"><div class="col-xs-12 no-padding"><ul class="nav nav-pills nav-stacked _cebMenu"><li data-bind="isVrProject" data-bind-type="show" role="presentation" style="display: none;"><a id="mobile_header_application" aria-label="Application" class="_appProgress openGenericMenu" data-widgetname="PlayerCandidateProgressPage" style="z-index: 2001" href="https://talentcentral.cebglobal.com/player/workflow/start#">Application<small class="pull-right perComplete"><span><span data-bind="percentageCompletion"></span><span>%</span><span>&nbsp;&nbsp;</span>COMPLETE<span>&nbsp;</span></span></small></a></li><li id="profile-menu-item" class="dropdown open" role="presentation"><a aria-expanded="true" aria-haspopup="true" role="button" href="https://talentcentral.cebglobal.com/player/workflow/start#" data-toggle="dropdown" class="dropdown-toggle" id="profile-menu-link"><i class="blue margin-left-third bigger-120 margin-right-20" data-bind="isLoggedIn" data-bind-type="hide"><span class="hidden">&nbsp;</span></i><span aria-label="Profile" data-bind="isLoggedIn" data-bind-type="hide">Profile</span><span aria-label="My Profile" data-bind="isLoggedIn" data-bind-type="show" style="display: none;"><i style="position:relative;top:1px;" class="shl-icon_user blue margin-left-third bigger-120 margin-right-5"><span class="hidden">&nbsp;</span></i>My Profile</span><span class="caret pull-right"></span></a><ul class="dropdown-menu"><li data-bind="showDetails" data-bind-type="show" style="display: none;"><a class="openGenericMenu" data-widgetname="CandidateDetailsWidget" href="https://talentcentral.cebglobal.com/player/workflow/start#">Your Details</a></li><li><a class="openGenericMenu" data-widgetname="PlayerAccessibilityWidget" href="https://talentcentral.cebglobal.com/player/workflow/start#"><i style="position:relative;top:1px;" class="shl-icon_accessibility blue bigger-120 margin-right-5"><span class="hidden">&nbsp;</span></i>Accessibility</a></li><li><a data-widgetname="PlayerLanguageWidget" class="openGenericMenu" href="https://talentcentral.cebglobal.com/player/workflow/start#"><i class="blue margin-left-third bigger-120 margin-right-15">&nbsp;</i>Language</a></li><li><a href="http://support.cebglobal.com/candidate" class="contact-us" target="_blank"><i style="position:relative;top:1px;" class="shl-icon_help blue margin-left-third bigger-120 margin-right-5"><span class="hidden">&nbsp;</span></i>Help</a></li><li class="header-browserCheck"><a href="https://talentcentral.cebglobal.com/player/workflow/start#">OS and Browser Compatibility</a></li></ul></li><li class="visible-xs" role="presentation"><a class="header-signout" data-href="/player/resources/shl_security_logout" href="javascript:void(0);" style="z-index: 2001; display: none;" data-bind="isLoggedIn" data-bind-type="show"><i style="position:relative; top:2px;" class="shl-icon_exit red margin-left-third bigger-120 margin-right-5"><span class="hidden">&nbsp;</span></i>Sign Out</a><a href="https://talentcentral.cebglobal.com/player/workflow/userlogin?mode=signin" class="text-brand" style="z-index: 2001" data-bind="isLoggedIn" data-bind-type="hide"><i class="blue margin-left-third bigger-120 margin-right-20"><span class="hidden">&nbsp;</span></i>Sign In &nbsp;<span class="text-muted">or</span>&nbsp; Sign Up</a></li></ul></div></div><div class="_overlay" style="height: 613px;">&nbsp;</div></div><script>
+  		
+  		$(document).ready(function(){
+			var i;
+			var cultureCode = '';
+			var value = '';
+			var domain = '';
+			var path = '';
+			var expiryTime = '';
+			waitTillPageContextLoads();
+			function waitTillPageContextLoads(){
+				for(i =0; i<=3000; i++){
+					if(i == 3000){
+						cultureCode = '';
+						value = '';
+						domain = '';
+						path = '';
+						expiryTime = '';
+					}
+				}
+			}
+			
+			var cookie = cultureCode+"="+value+";expires="+expiryTime+";path="+path;
+			document.cookie = cookie;
+  		});
+  		
+  		/* EventManager.registerEventHandlers('DataBound', widgetName , function(args, event){
+			debugger;
+			var i;
+			waitTillPageContextLoads();
+			function waitTillPageContextLoads(){
+				for(i =0; i<=3000; i++){
+					if(i == 3000){
+						
+						var context = 'org.apache.jasper.runtime.PageContextImpl@56ea70e';
+						var context1 = '';
+						var tempCookie = '';
+						
+						console.log(''+ ' Second Time');
+						console.log(document.getElementById("_testCookie")+ ' Second Time');
+						console.log(context+ ' Second Time');
+						console.log(''+ ' Second Time');
+						console.log(tempCookie);
+					}
+				}
+			}
+		}); */
+  </script></div></div></header><div class="device-xs visible-xs"><p class="hidden">&nbsp;</p></div><div class="device-sm visible-sm"><p class="hidden">&nbsp;</p></div><div class="device-md visible-md"><p class="hidden">&nbsp;</p></div><div class="device-lg visible-lg"><p class="hidden">&nbsp;</p></div><div id="wrapper" style="display: block;"><div version="2.0" id="header"></div><div style="overflow: hidden;" id="main"><div class="container-fluid no-padding"><!--?xml version="1.0" encoding="UTF-8"?-->
+<div><script>
+	var emailAddress = "";
+	getURI.next = "/player/workflow/processlogin"; 
+	var getCountriesURL = '/player/workflow/getcountries';
+	var customregistrationfieldsURL = '/player/workflow/customregistrationfields';
+	var frmadmn ='';
+	
+  </script><div id="SignInPageWidget"><!--?xml version="1.0" encoding="UTF-8"?-->
+<div><div version="2.0"><script>
+  	var widgetName = 'SignInPageWidget',
+  	widgetParams = 'cachebuster=1521286315222,deadLinePassed=false,isProjectExpired=false';
+  </script><div version="2.0" class="tc-source-loader position-relative" style="display: none;"><div class="commonloadingicon"><i class="icon-spinner icon-spin icon-large"><i class="hidden">&nbsp;</i></i></div></div><!--?xml version="1.0" encoding="UTF-8"?-->
+<div data-bind-version="2" version="2.0" widget-type="SignInPageWidget" widget-name="SignInPageWidget" class="cebwidget" widget-id="w_SignInPageWidget_2" style="visibility: visible; opacity: 1;"><span class="error">There has been an error processing your request.  Please try again.  If the problem persists, please <a href="http://support.cebglobal.com/client?l=en_US&amp;c=SHL_Support%3ASHL_Online" target="_blank" widget-data-event="click::ErrorHelpClicked">contact us</a></span></div><script>
+  		
+  		$(document).ready(function(){
+			var i;
+			var cultureCode = '';
+			var value = '';
+			var domain = '';
+			var path = '';
+			var expiryTime = '';
+			waitTillPageContextLoads();
+			function waitTillPageContextLoads(){
+				for(i =0; i<=3000; i++){
+					if(i == 3000){
+						cultureCode = '';
+						value = '';
+						domain = '';
+						path = '';
+						expiryTime = '';
+					}
+				}
+			}
+			
+			var cookie = cultureCode+"="+value+";expires="+expiryTime+";path="+path;
+			document.cookie = cookie;
+  		});
+  		
+  		/* EventManager.registerEventHandlers('DataBound', widgetName , function(args, event){
+			debugger;
+			var i;
+			waitTillPageContextLoads();
+			function waitTillPageContextLoads(){
+				for(i =0; i<=3000; i++){
+					if(i == 3000){
+						
+						var context = 'org.apache.jasper.runtime.PageContextImpl@aaae831';
+						var context1 = '';
+						var tempCookie = '';
+						
+						console.log(''+ ' Second Time');
+						console.log(document.getElementById("_testCookie")+ ' Second Time');
+						console.log(context+ ' Second Time');
+						console.log(''+ ' Second Time');
+						console.log(tempCookie);
+					}
+				}
+			}
+		}); */
+  </script></div></div></div><script type="text/javascript" src="./img2_files/login.js.download"></script></div></div><div version="2.0" id="footer"></div></div></div><div style="display:none"></div><script type="text/javascript" src="./img2_files/cebConfirmBoxPlugin.js.download"></script><script type="text/javascript" src="./img2_files/genericwidgets.js.download"></script><script type="text/javascript" src="./img2_files/bootstrap-switch.js.download"></script><script type="text/javascript" src="./img2_files/bootstrap-datepicker.js.download"></script><script type="text/javascript">
+	
+		EventManager.registerGlobalEventHandlers('TranslationsLoaded', function(args, e){
+	    	if(args)
+	    	{
+	    		var _translated = {
+	    				nonSelectedText: app.getLocalizedText('showdDropDown.noneSelected', 'None selected')
+	    		}
+	    		$.extend($.fn.multiselect.Constructor.prototype.defaults, _translated);
+	    	}
+	    });
+	</script><div class="marginTop-25 navbar-container"><div id="noJS" role="alert" class="alert alert-info delay-visibility" style="display: none;">You are not able to access the login screen due to your internet security settings being set too high.</div></div><div class="clearfix">&nbsp;</div><button class="scrollToTop" onclick="scrollToTop()"><span class="player-icons_back-to-top"><span class="sr-only">Scroll to Top</span></span></button><div id="generic_widgets_modal" role="dialog" tabindex="-1" class="modal fade _genericModal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header visible-md visible-lg visible-md visible-sm visible-xs text-right"><span tabindex="0" id="generic_widgets_close" aria-label="Close" data-dismiss="modal" class="sr-only"><i class="shl-icon_delete2_knockout" aria-hidden="true">&nbsp;</i></span></div><div id="widgetHolder" class="modal-body"><div class="_widgets_container"><div id="candidateDetailsContainer" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-11 col-md-offset-1 player_container"></div><div id="PlayerAccessibilityWidget" class="player_container">&nbsp;</div><div id="PlayerLanguageWidget" class="player_container">&nbsp;</div><div id="candidateProgressContainer" class="player_container col-xs-12 col-xs-offset-0 col-sm-8 col-sm-offset-2 col-md-12 col-md-offset-0"><p class="hidden">&nbsp;</p></div><div id="PlayerJobLocationContainer" class="col-xs-12 player_container">
+                       &nbsp;</div></div><div class="hidden" id="custom-content">
+                     &nbsp;
+                  </div></div><div class="modal-footer sr-only"><button data-dismiss="modal" class="btn btn-default" type="button">Close</button></div></div></div></div><div aria-labelledby="generic-updates-modal-label" role="dialog" tabindex="-1" id="generic-updates-modal" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="table-header"><button data-dismiss="modal" class="close" type="button"><span class="white bigger-180">×</span></button><span id="generic-updates-modal-label" class="modal-title">Register Here</span></div><div class="modal-body" id="generic-updates-modal-body">
+                  &nbsp;
+               </div><div class="modal-footer"><button data-dismiss="modal" class="btn btn-default" type="button">Close</button></div></div></div></div><div aria-labelledby="accessibility-update-modal-label" role="dialog" tabindex="-1" class="modal fade accessibility-update-modal"><div class="modal-dialog"><div class="modal-content"><div class="table-header"><span id="accessibility-update-modal-label" class="modal-title accessibility-update-modal-label">Loading Theme</span></div><div class="modal-body accessibility-update-modal-body">Please wait while theme is switching...</div><div class="modal-footer"><button data-dismiss="modal" class="btn btn-default" type="button">OK</button></div></div></div></div><div aria-labelledby="generic-updates-modal-label_heading" role="dialog" tabindex="-1" id="accessibility_Help_Modal" class="modal fade os-compat-modal hidden"><div class="modal-dialog"><div class="modal-content"><div class="panel panel-default"><div class="panel-heading"><h3 tabindex="0" class="panel-title"><span id="generic-updates-modal-label_heading">Accessibility Help</span></h3><a href="javascript:void(0)" tabindex="0" data-dismiss="modal" class=" close-generic-modal-handle _close" role="button" id="close-generic-modal-handle"><i class="shl-icon_delete2_knockout" aria-hidden="true"><i class="hidden">&nbsp;</i></i><span class="sr-only">Close</span></a></div><div class="panel-body"><div>We are fully committed to supporting candidates with disabilities who apply for jobs with organizations using our assessments. Most of our assessments can be adjusted to better suit individuals with disabilities, including but not limited to: visual impairment, hearing loss, mobility impairments, learning difficulties, mental health issues and disfigurements. We help recruiters by providing guidance and best practice on reasonable accomodations to assessments to make your experience as smooth and fair as possible.</div><div class="margin-top-10">Examples of possible assessment accomodations include the following:</div><div class="margin-top-10 margin-left-15"><div>• Support for screen reading software including Jaws for Windows and NVDA</div><div>• Giving candidates the choice to choose between different contrast options</div><div>• Allowing additional time to complete timed tests, for candidates who may require extra time to absorb information and to carry out necessary actions</div><div>• Accomodation to test presentation for candidates with dyslexia or a visual impairment</div><div>• Large print format tests on screen or on paper</div><div>• Braille printed tests on paper</div><div>• Supporting candidates with hearing loss by providing text scripts of voice sections on video or avatar-based tests</div></div><div class="margin-top-10">If you have a disability which you feel may affect the assessment that you have been asked to complete, it would be in your interest to make the recruiting organization aware of this as early as possible in the application process, so that suitable accomodations can be made to provide you with a fair experience. All accomodations must be discussed with, and agreed by the recruiting organization.</div><div class="margin-top-10">If you require additional help or to view the frequently asked questions, please visit our<a target="_blank" href="http://support.cebglobal.com/" aria-label="Support site (Opens in new window)"><span> support site.</span></a></div></div></div></div></div></div><div aria-labelledby="start_generic-updates-modal-label" role="dialog" tabindex="-1" id="browser_Support_Modal_start_assessment" class="modal fade hidden os-compat-modal browser_support_header_widget"><div class="modal-dialog"><div class="modal-content"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title"><span id="start_generic-updates-modal-label">Supported Browsers and Operating Systems</span></h3><a data-dismiss="modal" class="close close-generic-modal-handle" tabindex="0" role="button" href="javascript:void(0)"><i class="shl-icon_delete2_knockout" aria-hidden="true"><i class="hidden">&nbsp;</i></i><span class="sr-only">close</span></a></div><div class="panel-body"><div class="col-md-12 no-padding"><h4>Supported Browsers and Operating Systems for Desktop and Mobile</h4></div><div class="col-md-12"><h4>Desktop Browsers</h4><div class="row"><span class="col-sm-1 sprite os_ie os_icon">&nbsp;</span><span class="browserName">Internet Explorer - Version 11.0 and higher</span></div><div class="row"><span class="col-sm-1 sprite os_firefox os_icon">&nbsp;</span><span class="browserName">Firefox - Latest Version</span></div><div class="row"><span class="col-sm-1 sprite os_safari os_icon">&nbsp;</span><span class="browserName">Safari - Latest Version</span></div><div class="row"><span class="col-sm-1 sprite os_chrome os_icon">&nbsp;</span><span class="browserName">Google Chrome - Latest Version</span></div></div><div class="col-md-6"><h4>Mobile Device OS</h4><div class="row"><span class="col-sm-1 sprite os_android os_icon">&nbsp;</span><span class="browserName">Android 4.1 and higher</span></div><div class="row"><span class="col-sm-1 sprite os_safari os_icon">&nbsp;</span><span class="browserName">IOS 8.0 and higher</span></div><div clas="row"><span class="col-sm-1  sprite os_windows os_icon">&nbsp;</span><span class="browserName">Windows phone 8.1 and higher</span></div></div><div class="col-md-6"><h4>Mobile Device Browsers</h4><div class="row"><span class="col-sm-1 sprite os_android os_icon">&nbsp;</span><span class="browserName">Android Browser - Latest Version</span></div><div class="row"><span class="col-sm-1 sprite os_chrome os_icon">&nbsp;</span><span class="browserName">Chrome - Latest Version</span></div><div class="row"><span class="col-sm-1 sprite os_safari os_icon">&nbsp;</span><span class="browserName">Safari - Latest Version</span></div><div class="row"><span class="col-sm-1 sprite os_ie os_icon">&nbsp;</span><span class="browserName">IE - Latest Version</span></div></div></div><div class="panel-footer text-right"><button data-dismiss="modal" class="btn btn-default btn-secondary" type="button">Close</button></div></div></div></div></div><div aria-labelledby="myModalLabel" role="dialog" data-keyboard="false" data-backdrop="static" data-controls-modal="#dailog_timer" data-dismiss="modal" tabindex="-1" class="modal fade dailog_timer_notinuse"><div role="document" class="modal-dialog vrs-player-modal"><div class="modal-content"><div id="myModalLabel" class="table-header no-margin"><span class="modal-title instructionsPagesModal-label">Warning<button style="float:right;background:none;color: white;border-style: none;margin-top: 10px;" aria-hidden="true" class="icon-remove close"><span aria-hidden="true"><span class="sr-only">Close</span></span></button></span></div><div class="modal-body"><p><span style="color: orange;" class="shl-icon_error"><span style="color: black;font-size:16px;font-family: Times New Roman">Your session will timeout in next <span class="timeoutCounter">.</span></span></span></p><span style="color: black;font-size:14px;font-family: Times New Roman">Please click on Continue to continue your session.</span></div><div class="modal-footer"><button class="btn btn-primary close" type="button">Continue</button></div></div></div></div><div aria-labelledby="myModalLabel" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static" data-controls-modal="#dialog_end" id="dialog_end" class="modal fade modal-admin"><div role="document" class="modal-dialog vrs-player-modal"><div class="modal-content"><div class="table-header no-margin"><span class="modal-title instructionsPagesModal-label">Session Expired<button style="float:right;background:none;color: white;border-style: none;margin-top: 10px;" class="icon-remove next"><span aria-hidden="true"><span class="sr-only">Close</span></span></button></span></div><div class="modal-body"><p><span class="shl-icon_error"><span style="font-size:16px;">The time limit for this session has been reached. You must log back in to continue the assessment. Please close all browser windows and then start the session again.</span></span></p></div><div class="modal-footer"><button class="btn btn-primary next" type="button">OK</button></div></div></div></div><div tabindex="0" class="player-footer hidden-xs hidden-sm"><footer><!--?xml version="1.0" encoding="UTF-8"?-->
+<div><span>
+	  &nbsp; © <span class="_finalYear">2018 CEB, All rights reserved</span><script type="text/javascript">	
+		    $(document).ready(function(){
+		  		
+		    	EventManager.registerGlobalEventHandlers('TranslationsLoaded', function(args, e){
+		    		var _dbTime = readCookie("dbTime") || null;
+			  		var _year = (typeof _dbTime === "string" && _dbTime.length > 0) ? _dbTime.substring(1, _dbTime.indexOf("-")) : (new Date()).getFullYear();
+			  		var _text = app.getLocalizedText("CEB.footer.rights", "CEB 2018, All rights reserved", _year.toString());
+			  		$("._finalYear").text(_text);
+		    	});
+		    	
+		  	});
+		  </script></span></div></footer></div><span class="hidden accessibility-timer">&nbsp;</span><script type="text/javascript">			
+		//Code to show error in case Security settings are High and JS is not enabled for the browser.
+		var noJs = document.getElementById('noJS'),
+		pageContainer = document.getElementById('wrapper');
+		noJs.style.display = 'none';
+		pageContainer.style.display = 'block';		
+	</script></body></html>
