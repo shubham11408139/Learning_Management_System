@@ -1,46 +1,100 @@
-* {box-sizing: border-box}
-body {font-family: "Lato", sans-serif;}
-
-/* Style the tab */
-.tab {
-    float: left;
-    border: 2px solid #ccc;
-    background-color: #f1f1f1;
-    width: 30%;
-    height: 300px;
+.upper-header {
+    padding:5px;
+    background:coral;
+    color: coral;
+    margin: 0 !important;
+    padding: 4px !important
 }
+#head
 
-/* Style the buttons inside the tab */
-.tab button {
-    display: block;
-    background-color: inherit;
-    color: black;
-    padding: 20px 14px;
-    width: 100%;
-    border: none;
+/* Increase the font size of the h1 element */
+.header h1 {
+    font-size: 6px;
+}
+.header{
+    background-color:grey !important;
+    border-radius: 0 !important;
+
+}
+ul > li > a{
+    color: white !important;
+}
+ul > li > a:hover { 
+    background-color: darksalmon;
+}
+.dropdown-menu > li > a{
+    color: black !important
+}
+.icon-bar{
+    background: white !important;
+}
+.w3-agileits-subscribe-form {
+    margin: 1em 0;
+}
+.w3-agileits-subscribe-form input[type="text"] {
+    display: inline-block;
+    background:#ececec;
+    width: 73%;
     outline: none;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 17px;
+    padding: 1em;
+    font-size: .875em;
+    color: #999999;
+    border: solid 2px #ececec;
+}
+button.btn1 {
+    color: #FFFFFF;
+    font-size: .9em;
+    border: solid 1px ;
+    padding: 1em 1em;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+button.btn1:hover{
+    background: none;
+    border: solid 1px #ef543b;
+    color:#ef543b;
+}
+.footer-top h3 {
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: coral;
+	margin: 0 0 1em;
+}
+.footer-top p {
+    font-size: 14px;
+    color: #ffffff;
+    margin:0;
+    line-height: 28px;
+}
+p.footer-gd a {
+    color: #ef543b;
+}
+.footer-top {
+    background: url(../images/footer.jpg) no-repeat 0px 0px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-attachment: fixed;
+    padding: 5em 0;
+}
+agile_header_social li
+{
+    display: inline-block;
+}
+.backg
+{
+    background: url(../images/b1.jpg) no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+  
 }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-    background-color: coral;
-}
-
-/* Create an active/current "tab button" class */
-.tab button.active {
-    background-color: coral;
-}
-
-/* Style the tab content */
-.tabcontent {
-    float: left;
-    padding: 0px 12px;
-    border: 2px solid #ccc;
-    width: 70%;
-    border-left: none;
-    height: 300px;
-}
